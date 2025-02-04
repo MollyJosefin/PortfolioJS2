@@ -1,0 +1,45 @@
+.carousel {
+    width: 100%;
+    max-width: 600px; // Justera bredden efter behov
+    overflow: hidden;
+    position: relative;
+    margin: 1px auto;
+  
+    .carousel-track {
+      display: flex;
+      gap: 10px;
+      animation: scroll 15s linear infinite; // Gör animationen jämn och loopad
+      width: calc(220px * 11); // Bredden anpassas till antal bilder (220px * antal bilder)
+    }
+  
+    img {
+      width: 200px; // Justera bildstorlek
+      height: 120px;
+      object-fit: cover; // Beskär bilderna snyggt
+      border-radius: 10px;
+    }
+  }
+  
+  // Gör animationen som flyttar bilderna
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-220px * 6)); // Scrolla halva längden innan loop
+    }
+  }
+  
+  // Anpassning för mobil
+  @media (max-width: 768px) {
+    .carousel-track {
+      animation: scroll 10s linear infinite;
+      width: calc(180px * 11);
+    }
+  
+    img {
+      width: 160px;
+      height: 100px;
+    }
+  }
+  

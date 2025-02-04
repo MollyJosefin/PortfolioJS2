@@ -1,0 +1,251 @@
+@use "variables" as *;  // Importera färger
+@use "darkmode";   // Importera Dark Mode-styling
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: $color-bg-light;
+    color: $color-text-light;
+    transition: background 0.3s ease, color 0.3s ease;
+    padding: 0;
+    margin: 0;
+  }
+
+// Ge varje sektion mer spacing
+section {
+    padding: 10px 10%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .wave-container {
+    width: 100vw; // Full viewport width
+    overflow: hidden; // Prevents unwanted scrollbars
+  }
+  
+  .wave {
+    width: 100vw; // Ensures it takes the full width
+    height: 300px; // Set a fixed height
+    background-size: cover; // Ensures the image covers the entire width
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+
+  /*Standard layout för alla sidor förutom Projekt sidan*/
+  .layout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Desktop: 2/3 vänster, 1/3 höger */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  /* Både vänster och höger sektioner fyller sina kolumner */
+  .layout-left,
+  .layout-right {
+    width: 100%;
+  }
+  
+  /* Alla sektioner får en enhetlig maxbredd */
+  .layout-section,
+  .layout-right {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+  }
+  
+/* 📱 Mobilanpassning */
+@media (max-width: 768px) {
+  .layout-container {
+    grid-template-columns: 1fr; /* En kolumn på mobil */
+    padding: 10px; /* Tar bort extra padding */
+    max-width: 600px; /* Fixar bredden */
+    margin: 0 auto; /* Ser till att det ligger i mitten */
+  }
+
+  .layout-left,
+  .layout-right {
+    width: 100%;
+    max-width: 600px; /* Enhetlig bredd */
+    margin: 0 auto; /* Centrerar sektionerna */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .layout-section,
+  .layout-right {
+    width: 320px;
+    max-width: 100%; /* Ser till att de inte sticker ut */
+    padding: 20px;
+  }
+}
+
+/*Styling för projektsidan för att skapa en dropdown effekt för varje projekt*/
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .project-item {
+    background: var(--background-secondary);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.25);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+      }
+
+      .project-image {
+        width: 120px;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+    }
+
+    .short-description {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-top: 0.5rem;
+    }
+
+    .project-description {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .project-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Mobilanpassning
+  @media (max-width: 768px) {
+    .project-item {
+      .project-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .project-image {
+        width: 100%;
+        max-width: 250px;
+        display: block;
+        margin: 10px auto;
+      }
+
+      .short-description {
+        display: none; // Göm kort beskrivning på mobil
+      }
+    }
+
+    // Visa bild under titel i mobilversionen
+    .mobile-hidden {
+      display: none;
+    }
+
+    .mobile-visible {
+      display: block;
+    }
+  }
+}
+
+
+
+
+
+/*Profilbild styling på hemsidan*/
+.profile-image {
+  width: 250px; // Standardstorlek för desktop
+  height: auto;
+  border-radius: 50%; // Gör bilden rund
+  display: block;
+  margin: 0 auto; // Centrerar bilden
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 150px; // Mindre storlek för mobil
+  }
+
+  @media (max-width: 480px) {
+    width: 120px; // Ännu mindre för riktigt små skärmar
+  }
+}
+
+  /*Bilderna med vågor som sträcker sig över hela sidan*/
+  .light-1 {
+    background-image: url("/light-1.svg");
+  }
+  .light-2 {
+    background-image: url("/light-2.svg");
+  }
+  .light-3 {
+    background-image: url("/light-3.svg");
+  }
+  
+
+h1, h2, h3 {
+  color: $color-text-light;
+  
+}
+
+a {
+  color: $color-accent-light;
+  text-decoration: none;
+}
+
+button {
+  background-color: $color-secondary-light;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $color-highlight-light;
+  }
+}

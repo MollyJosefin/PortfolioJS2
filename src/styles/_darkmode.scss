@@ -1,0 +1,40 @@
+@use "variables" as *; // Laddar in alla variabler från _variables.scss
+
+
+.dark-mode {
+  background-color: $color-bg-dark;
+  color: $color-text-dark;
+
+  h1, h2, h3 {
+    color: $color-text-dark;
+  }
+
+  a {
+    color: $color-accent-dark;
+  }
+
+  button {
+    background-color: $color-secondary-dark;
+    
+    &:hover {
+      background-color: $color-highlight-dark;
+    }
+  }
+}
+
+.dark .navbar {
+    background: var(--nav-bg-dark, rgba(55, 55, 89, 0.9));
+    .logo {
+      color: var(--light-text, #fff);
+    }
+    .nav-links li a {
+      color: var(--light-text, #fff);
+      &:hover {
+        color: var(--accent, #ffcc00);
+      }
+    }
+    .hamburger span {
+      background: var(--light-text, #fff);
+    }
+  }
+  
